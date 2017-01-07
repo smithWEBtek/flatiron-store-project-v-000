@@ -64,8 +64,9 @@ describe 'Feature Test: Cart', :type => :feature do
         login_as(@user, scope: :user)
       end
 
-      it "Doesn't show Cart link when there is no current cart" do
+      it "Doesn't show Cart link when there is no current cart" do       
         cart = @user.carts.create(status: "submitted")
+
         first_item = Item.first
         first_item.line_items.create(quantity: 1, cart: cart)
         @user.current_cart = nil

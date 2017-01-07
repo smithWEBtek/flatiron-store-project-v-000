@@ -1,7 +1,13 @@
 <% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
-<% end %>
+<p><%= link_to category.title, category_path(category) %></p>
 
-<% @items.each do |item| %>
-  <p><%= item.title %> | <%= number_to_currency(item.price) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
+<% if current_user %>
+  <% category.items.each do |item| %>
+    <%= item.title %> | <%= "$#{item.price.to_f/100}" %>
+ 
+      <% if logged_in? %>
+        <input type='submit', value='Add To Cart' href=<%= "#{line_items_path}" %>>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
