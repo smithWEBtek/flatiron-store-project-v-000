@@ -4,7 +4,7 @@
       <%= item.title %> | <%= "$#{item.price.to_f/100}" %>
 
       <% if logged_in? %>
-         <input type='submit', value='Add To Cart' href=<%= "#{line_items_path}" %>>    
+         <input type='submit', value='Add to Cart' href=<%= "#{line_items_path}" %>>    
       <% end %>
   <% end %>
 <% end %>
