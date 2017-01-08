@@ -11,10 +11,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    @current_cart ||= Cart.new(user_id: self.id)
+    @current_cart ||= Cart.create(user_id: current_user.id)
   end
 
-  def current_cart=(cart)
-    cart = Cart.find_by(self.id)
+  def current_cart=
+    @current_cart = Cart.find_by(current_user.id)
   end
+
 end

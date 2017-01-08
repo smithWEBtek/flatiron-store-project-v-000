@@ -2,7 +2,6 @@ class CartsController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    @current_cart = @user.current_cart
   end
    
   def create
@@ -12,17 +11,22 @@ class CartsController < ApplicationController
     end
   end
 
+  def checkout
+    @cart =  Cart.find_by_id(params[:id])
+    @total = @cart.total
+    @cart.status = "submitted"
+    @cart.save
+     render 'checkout'
+  end
+
   def destroy
     @cart = Cart.find_by_id(params[:id])
+
     @cart.delete
   end
 
-  def checkout
-    Cart.find_by_id(params[:id]).destroy
-  end
-
-  private
-    def cart_params
-      params.require(:cart).permit(:user_id, :status)
-    end
+  # private
+  #   def cart_params
+  #     params.require(:cart).permit(:user_id, :status)
+  #   end
 end

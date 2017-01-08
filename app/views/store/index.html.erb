@@ -1,10 +1,12 @@
 <% @categories.each do |category| %>
 <p><%= link_to category.title, category_path(category) %></p>
     <% category.items.available_items.each do |item| %>
-      <%= item.title %> | <%= "$#{item.price.to_f/100}" %>
+      <%= item.title %> | <%= "$#{item.price.to_f/100}" %><br>
 
       <% if logged_in? %>
-         <input type='submit', value='Add to Cart' href=<%= "#{line_items_path}" %>>    
-      <% end %>
+ 
+        <%= button_to 'Add to Cart', checkout_path(current_cart) %>
+ 
+      <% end %><br>
   <% end %>
 <% end %>

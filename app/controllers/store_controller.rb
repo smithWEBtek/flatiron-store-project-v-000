@@ -2,7 +2,7 @@ class StoreController < ApplicationController
   
   def index 
     @categories = Category.all 
-    @items = Item.available_items
+    # current_cart.save
   end
 
   def users
