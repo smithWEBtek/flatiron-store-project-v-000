@@ -3,16 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :number_to_currency, :current_cart
 
   def logged_in?
-    if current_user
-      true
-    else
-      false
-    end
-  end
-
-  def current_user=
-    binding.pry
-    @current_user ||= User.find_by_id(session[:id])  
+    !!current_user
   end
 
   def number_to_currency(price)
