@@ -1,8 +1,9 @@
 <h1>All Carts</h1>
 
 <% @carts.each do |cart| %>
-  User: <%= cart.user.email %> | 
-  Cart ID: <%= cart.id %> |
-  Total : <%= number_to_currency(cart.total) %>
- <br>
+  User: <%= cart.user.email %> | Cart ID: <%= cart.id %> |Total : <%= number_to_currency(cart.total) %><br>
+    <%  cart.line_items.each do |line_item| %>
+      <%= line_item.item.title %> : <%= number_to_currency(line_item.item.price) %><br>
+    <% end %>
+ <br><br>
 <% end %> 

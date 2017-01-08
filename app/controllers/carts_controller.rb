@@ -1,24 +1,11 @@
 class CartsController < ApplicationController
-helper_method :current_cart
-  ######################
-  # def current_cart
-  #   if current_user
-  #     current_user.current_cart
-  #   end
-  # end
-######################
-
+ 
   def current_cart
-    @current_cart ||= Cart.find_by(user_id: current_user.id) 
+    if current_user
+      current_user.current_cart
+    end
   end
-
-  def current_cart=(cart)
-    cart = Cart.create(user_id: current_user.id) 
-    @current_cart = cart
-    @current_cart.save
-  end
-######################
-
+ 
   def index
     @carts = Cart.all
   end

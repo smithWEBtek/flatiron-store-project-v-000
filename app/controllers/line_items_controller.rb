@@ -1,20 +1,19 @@
 class LineItemsController < ApplicationController
 
   def create 
- # raise params.inspect
-    @line_item = LineItem.new(item_id: params[:format].to_i)
-    
+    @item = Item.find_by_id(params[:format].to_i)
     @cart = current_user.current_cart
-    @cart.save
-    @line_item.cart_id = @cart.id 
+    @line_item = LineItem.create(item_id: @item.id, cart_id: @cart.id)
     if @line_item.save
-      flash[:notice] = "Item added to cart"
-      redirect_to carts_path
-    else
-      flash[:notice] = "Some Ting Wong"
+      @cart.save
+      if @cart.save
+        current_cart = @cart
+        flash[:notice] = "#{@item.title} added to cart"
+        redirect_to carts_path
+      else
+        flash[:notice] = "That didn't work, better check it out."
+      end
     end
   end
-
-
 
 end
