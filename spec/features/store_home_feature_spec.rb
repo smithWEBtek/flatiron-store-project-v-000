@@ -67,6 +67,7 @@ describe 'Feature Test: Store', :type => :feature do
         before(:each) do
           @user = User.first
           login_as(@user, scope: :user)
+          # binding.pry
         end
 
         it "tells the user who they are signed in as" do

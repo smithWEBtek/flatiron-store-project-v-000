@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :logged_in?, :number_to_currency
+  helper_method :logged_in?, :number_to_currency, :current_cart
 
   def logged_in?
     if current_user
@@ -12,7 +12,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user=
+    binding.pry
+    @current_user ||= User.find_by_id(session[:id])  
+  end
+
   def number_to_currency(price)
     "$#{price.to_f/100}" 
   end
+
+  def current_cart
+    @current_cart ||= Cart.new(user_id: self.id)
+  end
+
+  def current_cart=(cart)
+    cart = Cart.find_by(self.id)
+  end
+
+
 end

@@ -1,15 +1,29 @@
 class CartsController < ApplicationController
 
   def show
-    @current_cart = User.find_by_id(params[:id]).current_cart
-# binding.pry
-    
-    # # should have user_id: current_user.id
-    # # current_user should be logged_in
-    # # navigable by /users/:id/carts/:id
+    @user = User.find_by_id(params[:id])
+    @current_cart = @user.current_cart
   end
    
   def create
+    @cart = Cart.create(cart_params)
+    if @cart.save
+      redirect_to root_path
+    end
   end
+
+  def destroy
+    @cart = Cart.find_by_id(params[:id])
+    @cart.delete
+  end
+
+  def checkout
+    Cart.find_by_id(params[:id]).destroy
+  end
+
+  private
+    def cart_params
+      params.require(:cart).permit(:user_id, :status)
+    end
 
 end

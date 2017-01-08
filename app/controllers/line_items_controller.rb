@@ -1,12 +1,9 @@
 class LineItemsController < ApplicationController
-
-
-  def new
-    @line_item = LineItem.new
-  end
+binding.pry
 
   def create 
-    @line_item = LineItem.new(line_item_params)
+binding.pry
+    @line_item = LineItem.create(line_item_params)
     if @line_item.save
       @line_item
     else
@@ -14,10 +11,4 @@ class LineItemsController < ApplicationController
     end
   end
 
-  private
-  def line_item_params
-    params.require(:line_item).permit(:item_id, :cart_id)
-  end
-  
- 
 end

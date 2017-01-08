@@ -5,7 +5,8 @@
    <%= link_to "Cart", cart_path(current_cart) %> |
 <% end %>
 
-<% if logged_in? %>
+<% if logged_in? && current_user %>
+
   <%= "Signed in as #{current_user.email}" %>
   <%= link_to "Sign out", destroy_user_session_path %> |
 <% end %>
