@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   post 'carts/:id/checkout', to: 'carts#checkout', as: 'checkout'
 
-
+  get '/users', to: 'store#users', as: 'store/users'
 
 end
  

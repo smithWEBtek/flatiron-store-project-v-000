@@ -7,6 +7,6 @@ class Item < ActiveRecord::Base
     Item.all.each do |item|
       available_items << item if item.inventory > 0
     end
-    available_items
+     available_items
   end
 end

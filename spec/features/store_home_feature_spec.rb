@@ -15,7 +15,7 @@ describe 'Feature Test: Store', :type => :feature do
         second_item.save
         visit store_path
         Item.all.each do |item|
-          if item == second_item
+          if item == second_item            
             expect(page).to_not have_content item.title
           else
             expect(page).to have_content item.title
