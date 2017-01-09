@@ -5,7 +5,6 @@ class CartsController < ApplicationController
   end
   
   def show
-# raise params.inspect
     @cart = Cart.find(params["id"].to_i)
   end
    
@@ -17,17 +16,18 @@ class CartsController < ApplicationController
   end
 
   def checkout
-     @cart = Cart.find_by_id(params[:id])
-     process_cart
-    redirect_to cart_path(@cart)
+    @cart = Cart.find_by_id(params[:id])
+    process_cart
+    redirect_to cart_path(@cart.id)
   end
 
   def process_cart
     @cart.line_items.each do |litem|
       litem.item.inventory = litem.item.inventory - litem.quantity
       litem.item.save
-    end
+  end
       @cart.status = "submitted"
+      @cart.user_id = 0
       @cart.save
   end
 end

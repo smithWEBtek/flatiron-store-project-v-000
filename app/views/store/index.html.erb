@@ -3,7 +3,7 @@
     <% category.items.available_items.each do |item| %>
       <%= item.title %> | <%= "$#{item.price.to_f/100}" %><br>
      <% if logged_in? %>
-      <%= button_to 'Add to Cart', line_items_path(item) %>
+      <%= button_to 'Add to Cart', "#{line_items_path}?item_id=#{item.id}" %>
     <% end %>
   <% end %>
 <% end %>
