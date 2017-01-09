@@ -10,6 +10,5 @@ class User < ActiveRecord::Base
   def current_cart=(cart)
     cart = Cart.find_by(self.id)
   end
-
-
+ 
 end

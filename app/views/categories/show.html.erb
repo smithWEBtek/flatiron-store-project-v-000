@@ -4,8 +4,14 @@
 <% @category.items.each do |item| %>
     <li><%= link_to item.title, item_path(item) %>  <%= "$#{item.price.to_f/100}" %></li>
     
+  <%# if logged_in? %>
+    <!-- <input type='submit', value='Add to Cart' href=<%#= "#{line_items_path}" %>> -->
+  <%# end %>
+
   <% if logged_in? %>
-    <input type='submit', value='Add to Cart' href=<%= "#{line_items_path}" %>>
+    <%= button_to 'Add to Cart', "#{line_items_path}?item_id=#{item.id}" %>
   <% end %>
+
+
  <% end %>
 </ul>
