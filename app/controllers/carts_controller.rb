@@ -1,24 +1,31 @@
 class CartsController < ApplicationController
- 
-  def current_cart
-    if current_user
-      current_user.current_cart
-    end
-  end
- 
+
   def index
     @carts = Cart.all
   end
-
+  
   def show
-    @user = User.find_by_id(params[:id])
+    @cart = Cart.find(params[:id])
+  end
+   
+  def create
+    @cart = Cart.create(cart_params)
+    if @cart.save
+      redirect_to root_path
+    end
   end
 
-  def checkout 
+  def clear_cart
+    current_cart.clear_cart
+    redirect_to cart_path(current_cart)
+  end
+
+  def checkout
     @cart =  Cart.find_by_id(params[:id])
     @total = @cart.total
-    @cart.status = nil
+    @cart.status = "submitted"
     @cart.save
-     redirect_to cart_path(@cart)
+     render 'checkout'
   end
+ 
 end

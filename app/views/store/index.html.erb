@@ -2,10 +2,8 @@
 <p><%= link_to category.title, category_path(category) %></p>
     <% category.items.available_items.each do |item| %>
       <%= item.title %> | <%= "$#{item.price.to_f/100}" %><br>
-
-      <% if logged_in? %>
-        <%= button_to 'Add to Cart', line_items_path(item) %>
-      <% end %><br>
-      
+     <% if logged_in? %>
+      <%= button_to 'Add to Cart', line_items_path(item) %>
+    <% end %>
   <% end %>
 <% end %>
