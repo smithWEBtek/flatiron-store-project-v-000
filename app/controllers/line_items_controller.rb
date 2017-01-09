@@ -1,12 +1,30 @@
 class LineItemsController < ApplicationController
 
   def create
+# {"item_id"=>"1", "controller"=>"line_items", "action"=>"create"}
+
     @item = Item.find_by_id(params[:item_id])
-    @cart = current_user.current_cart
-    @cart.save
-    @line_item = LineItem.find_or_create_by(item_id: @item.id, cart_id: @cart_id)
-    @line_item.save
+# @item  => #<Item:0x007f8ea4cf01e0
+ # id: 1,
+ # title: "Mediocre Bronze Watch",
+ # price: 7246,
+ # inventory: 78,
+ # category_id: 1> 
+
+    @cart = current_cart 
 # binding.pry
-     redirect_to cart_path(@cart)
+    @cart.save
+    if @cart.items.include?(@item)
+      @line_item = @cart.line_items.find_by(item_id: @item.id)
+# binding.pry
+      @line_item.update(quantity: 2)
+# binding.pry
+    else
+      @line_item = LineItem.new(item_id: @item.id)
+      @line_item.cart_id = @cart.id
+      @line_item.save 
+# binding.pry
+    redirect_to cart_path(@cart)
+    end
   end
 end

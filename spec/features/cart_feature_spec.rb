@@ -125,7 +125,7 @@ describe 'Feature Test: Cart', :type => :feature do
           click_button("Add to Cart")
         end
         @user.reload
-        expect(@user.current_cart.items).to include(first_item)
+         expect(@user.current_cart.items).to include(first_item)
       end
 
       it "Shows you the cart after you hit add to cart" do

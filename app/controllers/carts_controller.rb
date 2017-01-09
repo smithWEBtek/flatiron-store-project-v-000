@@ -25,10 +25,10 @@ class CartsController < ApplicationController
     @cart.line_items.each do |litem|
       litem.item.inventory = litem.item.inventory - litem.quantity
       litem.item.save
-  end
+ 
       @cart.status = "submitted"
-      @cart.user_id = 0
       @cart.save
-  end
+     end
+   end
 end
  

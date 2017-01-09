@@ -8,8 +8,7 @@
 
   <% @cart.line_items.each do |line_item| %>
     <%= link_to line_item.item.title, item_path(line_item.item) %> | <%= number_to_currency(line_item.item.price) %> | Quantity: <%= line_item.quantity %>
-
-  <% end %>
+   <% end %>
 
   <p>Order total: <strong><%= number_to_currency(@cart.total) %></strong> </p>
 
