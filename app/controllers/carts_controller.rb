@@ -5,7 +5,8 @@ class CartsController < ApplicationController
   end
   
   def show
-    @cart = Cart.find(params[:id])
+# raise params.inspect
+    @cart = Cart.find(params["id"].to_i)
   end
    
   def create
@@ -25,7 +26,9 @@ class CartsController < ApplicationController
     @total = @cart.total
     @cart.status = "submitted"
     @cart.save
-     render 'checkout'
+    # binding.pry
+
+    redirect_to cart_path(@cart)
   end
  
 end

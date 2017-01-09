@@ -14,8 +14,8 @@
    <%= link_to "sign in", new_user_session_path %> |
 <% end %>
 
-<% if !!@cart %>
-  <%= link_to "Cart", cart_path(current_cart) %>
+<% if @cart %>
+  <%= link_to "Cart", cart_path(@cart) %>
 <% end %>
 
  </nav>
