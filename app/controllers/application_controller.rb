@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :logged_in?, :number_to_currency, :current_cart
  
+  # def current_cart
+  #   if current_user
+  #     current_cart ||= current_user.current_cart
+  #   end
+  # end
+
   def current_cart
-    if current_user
-      current_cart ||= current_user.current_cart
-    end
+    current_cart ||= current_user.current_cart
   end
 
   def logged_in?

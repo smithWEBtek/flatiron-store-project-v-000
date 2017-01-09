@@ -16,19 +16,19 @@ class CartsController < ApplicationController
     end
   end
 
-  def clear_cart
-    current_cart.clear_cart
-    redirect_to cart_path(current_cart)
-  end
-
   def checkout
-    @cart =  Cart.find_by_id(params[:id])
-    @total = @cart.total
-    @cart.status = "submitted"
-    @cart.save
-    # binding.pry
-
+     @cart = Cart.find_by_id(params[:id])
+     process_cart
     redirect_to cart_path(@cart)
   end
- 
+
+  def process_cart
+    @cart.line_items.each do |litem|
+      litem.item.inventory = litem.item.inventory - litem.quantity
+      litem.item.save
+    end
+      @cart.status = "submitted"
+      @cart.save
+  end
 end
+ 

@@ -26,5 +26,5 @@ class Cart < ActiveRecord::Base
     end
     @total
   end
-
+  
 end
