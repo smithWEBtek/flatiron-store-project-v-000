@@ -1,7 +1,9 @@
 class LineItemsController < ApplicationController
 
   def create
-# {"item_id"=>"1", "controller"=>"line_items", "action"=>"create"}
+  # raise params.inspect
+ #  params => {"item_id"=>"1", "controller"=>"line_items", "action"=>"create"}
+ #  params => {"item_id"=>"6", "controller"=>"line_items", "action"=>"create"}
 
     @item = Item.find_by_id(params[:item_id])
 # @item  => #<Item:0x007f8ea4cf01e0
