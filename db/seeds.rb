@@ -43,29 +43,29 @@ end
 
 make_users
 
-@categories = {}
-@categories = {
-  :category_keys =>
-    ["title"], 
-  :categories => [
-    ["produce"], 
-    ["clothing"], 
-    ["office"], 
-    ["wellness"]
-  ]
- }
+# @categories = {}
+# @categories = {
+#   :category_keys =>
+#     ["title"], 
+#   :categories => [
+#     ["produce"], 
+#     ["clothing"], 
+#     ["office"], 
+#     ["wellness"]
+#   ]
+#  }
 
-def make_categories
-  @categories[:categories].each do |category|
-    new_category = Category.new
-    category.each_with_index do |attribute, i|
-      new_category.send(@categories[:category_keys][i]+"=", attribute)
-    end
-    new_category.save
-  end
-end
+# def make_categories
+#   @categories[:categories].each do |category|
+#     new_category = Category.new
+#     category.each_with_index do |attribute, i|
+#       new_category.send(@categories[:category_keys][i]+"=", attribute)
+#     end
+#     new_category.save
+#   end
+# end
 
-make_categories
+# make_categories
 
 # @items = {}
 # @items = {
@@ -128,29 +128,29 @@ make_categories
 
 # make_carts 
 
-@orders = {}
-@orders = {
-  :order_keys =>
-    ["user_id", "cart_id"], 
-  :orders => [
-    [1, 1],
-    [2, 2],
-    [3, 3],
-    [4, 4]
-  ]
-}
+# @orders = {}
+# @orders = {
+#   :order_keys =>
+#     ["user_id", "cart_id"], 
+#   :orders => [
+#     [1, 1],
+#     [2, 2],
+#     [3, 3],
+#     [4, 4]
+#   ]
+# }
 
-def make_orders
-  @orders[:orders].each do |order|
-    new_order = Order.new
-    order.each_with_index do |attribute, i|
-      new_order.send(@orders[:order_keys][i]+"=", attribute)
-    end
-    new_order.save
-  end
-end
+# def make_orders
+#   @orders[:orders].each do |order|
+#     new_order = Order.new
+#     order.each_with_index do |attribute, i|
+#       new_order.send(@orders[:order_keys][i]+"=", attribute)
+#     end
+#     new_order.save
+#   end
+# end
 
-make_orders 
+# make_orders 
 
 # @line_items = {}
 # @line_items = {
