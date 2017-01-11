@@ -1,4 +1,5 @@
 <nav class="">
+
 <%= link_to "Store Home", store_path %> | 
 
 <% if logged_in? && current_user %>
@@ -15,7 +16,9 @@
 <% end %>
 
 <% if @cart %>
-   <%= link_to "Cart", cart_path(@cart) %>
+  <%= link_to "Cart", cart_path(@cart) %> |
 <% end %>
+
+<%= link_to "Admin", admin_path %>
  
- </nav>
+</nav>

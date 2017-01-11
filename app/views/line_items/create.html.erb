@@ -12,6 +12,8 @@
 
   <p>Order total: <strong><%= number_to_currency(@cart.total) %></strong> </p>
 
+  <form class="button_to" method="get" action="<%= store_path %>"><input type="submit" value="Keep shopping"></form>
+
   <% if @cart  %>
     <%= button_to 'Checkout', checkout_path(@cart) %>
   <% end %>  

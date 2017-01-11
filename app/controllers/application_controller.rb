@@ -11,7 +11,14 @@ class ApplicationController < ActionController::Base
   end
 
   def number_to_currency(price)
-    "$#{price.to_f/100}" 
-  end
+    "$#{"%.2f" % (price / 100.0)}"
+   end
 
+  def admin
+    @categories = Category.all
+    @items = Item.all 
+    @users = User.all
+    @carts = Cart.all
+    render 'admin/index'
+  end
 end

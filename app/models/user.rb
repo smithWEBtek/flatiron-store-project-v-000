@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_one :current_cart, class: Cart
    
   def current_cart
-    Cart.find_or_create_by(user_id: self.id)
+    @current_cart ||= Cart.find_or_create_by(user_id: self.id)
   end
- 
 end

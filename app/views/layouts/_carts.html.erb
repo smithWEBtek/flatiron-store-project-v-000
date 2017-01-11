@@ -1,0 +1,40 @@
+ 
+<p>
+  <% @carts.each do |cart| %>
+
+
+<table>
+  <col width="170">
+  <col width="80">
+  <col width="80">
+  <col width="120">
+
+_______________________________________________________________
+  
+<h5>Cart: <%= cart.id %> User: <%= cart.user.email %></h5>
+
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+    <% cart.line_items.each do |litem| %>
+    <tr>
+      <td><%= link_to "#{litem.item.title}", item_path(litem.item) %></td>
+      <td><%= litem.quantity %></td>
+      <td><%= number_to_currency(litem.item.price) %></td>
+      <td><%= number_to_currency(litem.item.price * litem.quantity) %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><h5><strong>Total</strong></h5></td>
+      <td>
+          <h5><strong><%= number_to_currency(cart.total) %></strong></h5>      
+      </td>
+    </tr>
+  <% end %>
+</table>
+_______________________________________________________________

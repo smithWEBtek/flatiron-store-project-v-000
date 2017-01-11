@@ -79,6 +79,12 @@ describe 'Feature Test: Cart', :type => :feature do
         first_item.line_items.create(quantity: 1, cart: @user.current_cart)
         @user.save
         visit store_path
+
+#############################################################
+########  expected to find link "Cart" with href "/carts/1" 
+########  but there were no matches
+#############################################################
+
         expect(page).to have_link("Cart", href: cart_path(@user.current_cart))
       end
 

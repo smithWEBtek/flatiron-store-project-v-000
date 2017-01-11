@@ -1,0 +1,28 @@
+
+
+<p>
+  <table>
+    <col width="170">
+    <col width="170">
+    <col width="80">
+    <col width="80">
+   
+  <tr>
+    <th>Category</th>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Inventory</th>
+    <th>Value</th>
+  </tr>
+<% @items.each do |item| %>
+  <tr>
+    <td><%= link_to "#{item.category.title}", category_path(item.category) %></td>  
+    <td><%= link_to "#{item.title}", item_path(item) %></td>
+    <td align='center'><%= number_to_currency(item.price) %></td>
+    <td align='center'><%= item.inventory %></td>
+    <td align='right'><%= number_to_currency(item.inventory * item.price) %></td>
+  </tr>
+    <% end %>
+  </table>
+</p>
+______________________________________________________
