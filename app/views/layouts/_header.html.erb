@@ -15,8 +15,8 @@
    <%= link_to "sign in", new_user_session_path %> |
 <% end %>
 
-<% if @cart %>
-  <%= link_to "Cart", cart_path(@cart) %> |
+<% if current_cart %>
+  <%= link_to "Cart", checkout_path(current_cart) %> |
 <% end %>
 
 <%= link_to "Admin", admin_path %>

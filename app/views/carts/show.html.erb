@@ -15,7 +15,7 @@
     <input type="submit" value="Keep Shopping">
  </form>
 
-<% if @cart.status != "submitted" %>
-    <%= button_to 'Checkout', checkout_path(@cart) %>
+<% if current_cart.status != "submitted" %>
+    <%= button_to 'Checkout', cart_path(current_cart) %>
   <% end %>  
 <% end %>  

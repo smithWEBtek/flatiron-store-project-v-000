@@ -9,27 +9,15 @@ class CartsController < ApplicationController
   end
    
   def create
-    @cart = Cart.create(cart_params)
-    if @cart.save
-      redirect_to root_path
-    end
+    user.current_cart 
+    redirect_to root_path
   end
 
   def checkout
-    @cart = Cart.find_by_id(params[:id])
-    process_cart
-    @user = current_user
-    redirect_to cart_path(@cart.id)
+    current_cart.update_inventory
+    current_cart = nil
+    redirect_to cart_path(current_user.current_cart)
   end
-
-  def process_cart
-    @cart.line_items.each do |litem|
-      litem.item.inventory = litem.item.inventory - litem.quantity
-      litem.item.save
  
-      @cart.status = "submitted"
-      @cart.save
-     end
-   end
 end
  

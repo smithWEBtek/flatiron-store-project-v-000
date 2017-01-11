@@ -1,7 +1,0 @@
-  modified:   app/controllers/application_controller.rb
-  modified:   app/controllers/carts_controller.rb
-  modified:   app/controllers/store_controller.rb
-  new file:   app/views/carts/checkout.html.erb
-  modified:   app/views/carts/show.html.erb
-  modified:   app/views/store/index.html.erb
-  new file:   edited files since 10.txt

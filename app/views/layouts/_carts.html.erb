@@ -11,8 +11,7 @@
 
 _______________________________________________________________
   
-<h5>Cart: <%= cart.id %> User: <%= cart.user.email %></h5>
-
+<h5><%= link_to "Cart: #{cart.id}", cart_path(cart) %> User: <%= cart.user.email %></h5>
     <tr>
       <th>Item</th>
       <th>Qty</th>
