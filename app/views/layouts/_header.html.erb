@@ -1,5 +1,31 @@
-<nav class="">
 
+---------------------------------------------------------------------------------------
+<h4>House keeping variables: </h4>
+<% if current_user %>
+  <strong>current_user:</strong> <%= current_user.email %>
+<% end %>
+<br>
+
+<% if current_cart %>
+ <strong>current_user.current_cart: </strong>
+  <%= "#{current_cart.user.email}" %> 
+  <strong>cart_id:</strong> <%= "#{current_cart.user_id}" %><br>
+  <strong>cart status:</strong> <%= current_cart.status.upcase %>
+<% else %>
+  Cart has no contents
+<% end %>
+<br>
+
+<strong>@user:</strong>
+<% if @user %>
+  @user: <%= @user.email %>
+<% else %>
+@user not defined
+<% end %>
+<br>
+---------------------------------------------------------------------------------------
+
+<nav class="">
 <%= link_to "Store Home", store_path %> | 
 
 <% if logged_in? && current_user %>
@@ -16,9 +42,8 @@
 <% end %>
 
 <% if current_cart %>
-  <%= link_to "Cart", checkout_path(current_cart) %> |
+  <%= link_to "Cart", checkout_path(current_cart) %>
 <% end %>
-
+  
 <%= link_to "Admin", admin_path %>
- 
 </nav>

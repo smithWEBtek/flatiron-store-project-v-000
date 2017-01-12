@@ -1,7 +1,7 @@
  
 <p>
 
-  <% @carts.each do |cart| %>
+  
 <table>
   <col width="180">
   <col width="150">
@@ -9,9 +9,9 @@
   <col width="150">
   
     <tr>
-      <h5><th><%= link_to "Cart: #{cart.id}", cart_path(cart) %> User:<%= cart.user_id %></th>
-      <th><%= cart.user.email %></th>
-      <th>Status: <%= cart.status %></th>
+      <h5><th><%= link_to "Cart: #{current_cart.id}", cart_path(current_cart) %> User:<%= current_cart.user_id %></th>
+      <th><%= current_cart.user.email %></th>
+      <th>Status: <%= current_cart.status %></th>
     ______________________________________________________________________________
 
       </tr></h5>
@@ -22,7 +22,7 @@
       <th>Price</th>
       <th>Subtotal</th>
     </tr>
-    <% cart.line_items.each do |litem| %>
+    <% current_cart.line_items.each do |litem| %>
     <tr>
       <td><%= link_to "#{litem.item.title}", item_path(litem.item) %></td>
       <td><%= litem.quantity %></td>
@@ -35,9 +35,9 @@
       <td></td>
       <td><h5><strong>Total</strong></h5></td>
       <td>
-          <h5><strong><%= number_to_currency(cart.total) %></strong></h5>      
+          <h5><strong><%= number_to_currency(current_cart.total) %></strong></h5>      
       </td>
     </tr>
-  <% end %>
+
 </table>
 ______________________________________________________________________________

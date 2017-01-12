@@ -1,22 +1,26 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :logged_in?, :number_to_currency, :current_cart
+  helper_method :logged_in?, :number_to_currency, :current_cart, :admin
  
+  # def carts
+  #   @carts = Cart.all
+  # end
+
   def current_cart
-    @current_cart ||= current_user.current_cart unless !logged_in?
+    current_cart ||= current_user.current_cart unless !logged_in?
   end
 
   def current_cart=
     current_cart
   end
- 
+
   def logged_in?
     !!current_user
   end
 
   def number_to_currency(price)
     "$#{"%.2f" % (price / 100.0)}"
-   end
+  end
 
   def admin
     @categories = Category.all

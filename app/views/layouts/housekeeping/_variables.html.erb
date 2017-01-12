@@ -1,0 +1,13 @@
+<% if current_user %>
+  <strong>current_user:</strong> <%= current_user.email %>
+<% end %>
+<br>
+
+<strong>@user:</strong>
+<% if @user %>
+  @user: <%= @user.email %>
+<% else %>
+@user not defined
+<% end %>
+<br>
+<br>

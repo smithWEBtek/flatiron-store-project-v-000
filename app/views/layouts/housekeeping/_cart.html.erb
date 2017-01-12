@@ -1,0 +1,13 @@
+
+<% if current_cart %>
+ <strong>current_user.current_cart: </strong>
+  <%= "#{current_cart.user.email}" %> 
+  <strong>cart_id:</strong> <%= "#{current_cart.user_id}" %><br>
+  <strong>cart contents:</strong> 
+    <% if current_cart %>
+      <%= render'layouts/housekeeping/cart_single' %>
+    <% else %>
+    Cart has no contents
+  <% end %>
+<% end %>
+<br>
