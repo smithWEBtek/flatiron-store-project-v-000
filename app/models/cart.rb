@@ -32,7 +32,7 @@ class Cart < ActiveRecord::Base
       line_item.item.inventory = line_item.item.inventory - line_item.quantity
       line_item.item.save
       self.status = "submitted"
-      self.save      
+      self.save   
     end
   end
 end

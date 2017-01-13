@@ -13,6 +13,6 @@
 
 <p>Order total: <strong>$<%= current_cart.total.to_f/100 %></strong> </p>
 
-<% if current_cart.status == 'not submitted' %>
+<% if current_cart.status != 'submitted' %>
   <%= button_to 'Checkout', checkout_path %>
 <% end %>

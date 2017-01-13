@@ -12,6 +12,7 @@ class CartsController < ApplicationController
 # binding.pry
     current_cart.checkout
     current_cart = nil
+
     redirect_to cart_path(params[:id].to_i)
   end
 

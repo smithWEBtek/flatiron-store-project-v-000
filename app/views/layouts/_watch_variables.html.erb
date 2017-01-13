@@ -1,0 +1,26 @@
+
+---------------------------------------------------------------------------------------
+<h4>House keeping variables: </h4>
+<% if current_user %>
+  <strong>current_user:</strong> <%= current_user.email %>
+<% end %>
+<br>
+
+<% if current_cart %>
+ <strong>current_user.current_cart: </strong>
+  <%= "#{current_cart.user.email}" %> 
+  <strong>cart_id:</strong> <%= "#{current_cart.user_id}" %><br>
+  <strong>cart status:</strong> <%= current_cart.status %>
+<% else %>
+  Cart has no contents
+<% end %>
+<br>
+
+<strong>@user:</strong>
+<% if @user %>
+  @user: <%= @user.email %>
+<% else %>
+@user not defined
+<% end %>
+<br>
+---------------------------------------------------------------------------------------
