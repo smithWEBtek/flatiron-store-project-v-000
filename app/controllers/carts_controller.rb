@@ -3,15 +3,16 @@ class CartsController < ApplicationController
   def index
     @carts = Cart.all
   end
-  
+
   def show
-    current_cart
+    @cart = Cart.find(params[:id])
+  end
+ 
+  def checkout
+# binding.pry
+    current_cart.checkout
+    current_cart = nil
+    redirect_to cart_path(params[:id].to_i)
   end
 
-  def checkout
-    current_cart.update_inventory
-    current_cart = nil
-    redirect_to cart_path(params[:id])
-  end
 end
- 
