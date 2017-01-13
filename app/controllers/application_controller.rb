@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # end
 
   def current_cart
-    current_cart ||= current_user.current_cart unless !logged_in?
+    current_cart ||= current_user.current_cart
   end
 
   def current_cart=
