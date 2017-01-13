@@ -9,7 +9,6 @@ class CartsController < ApplicationController
   end
  
   def checkout
-# binding.pry
     current_cart.checkout
     current_cart = nil
 

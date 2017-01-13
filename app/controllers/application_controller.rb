@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :number_to_currency, :current_cart, :admin
    
   def current_cart
-    current_cart ||= current_user.current_cart unless !logged_in? 
-  end
+     current_cart ||= current_user.current_cart
+   end
 
   def current_cart=
     current_cart
